@@ -1,5 +1,5 @@
 {
-  "name": "generic-fastify-backend-routing",
+  "name": "deepseek-backend-routing",
   "version": "1.0.0",
   "main": "src/index.ts",
   "scripts": {
