@@ -9,6 +9,7 @@ import config from "./config/config";
 
 // Import user controller (handles user-related routes)
 import { userController } from "./controllers/user-controllers";
+import { deepseekController } from "./controllers/deepseek-controllers";
 
 // Import authentication plugin (handles JWT authentication via cookies)
 import auth from "./plugins/auth";
@@ -39,7 +40,7 @@ class Application {
   // **Starts the Fastify HTTP Server**
   async startHttpServer() {
     try {
-      console.log("config.port", config.port); // Logs the port number (useful for debugging)
+      console.log("config.port", config.port);
 
       // Start the server on the specified port
       const address = await this.server.listen({ port: config.port });
@@ -82,6 +83,10 @@ class Application {
     // The prefix ensures all routes inside `userController` are under `/api/v1/users`
     this.server.register(userController, {
       prefix: `${config.apiPrefix}/users`,
+    });
+
+    this.server.register(deepseekController, {
+      prefix: `${config.apiPrefix}/deepseek`,
     });
   }
 
